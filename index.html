@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myocalc</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="blur-background"></div>
+  <div id="page-content">
+  <div class="containheader" id="head1">
+    <h1>MYOCARDITIS INDICATOR</h1>
+	<div id="logout-btn-container"  style="margin-right: 16px; float: right; margin-top: -40px;">
+      <button type="button" class="btn btn-danger" id="logout-btn">Logout</button>
+    </div>
+  </div>
+
+  <div class="container my-5" id="login-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Login</h3>
+          </div>
+          <div class="card-body">
+            <form id="login-form">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5 d-none" id="instructions-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h3>Instructions for Diagnosing Myocarditis</h3>
+            <ol>
+              <li>Give 5 points for presence of inflammation on either MRI, DOTANOC or BIOPSY.</li>
+              <li>Give 3 points for raised CRP (CRP>3).</li>
+              <li>Give 1 point for presence of Chest Pain.</li>
+            </ol>
+            <p>The Results will indicate Definite or Probable Myocarditis or if it is Unlikely.</p>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-primary" id="proceed-btn">Proceed to Diagnose</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5 d-none" id="app-container">
+   
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3>Please enter your observations</h3>
+            <form id="questionnaire">
+              <div class="form-group" id="param">
+                <label>MRI</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q1-option1" name="q1" class="custom-control-input" value="0">
+                  <label class="custom-control-label" for="q1-option1">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q1-option2" name="q1" class="custom-control-input" value="5">
+                  <label class="custom-control-label" for="q1-option2">Positive or Presence of Inflammation</label>
+                </div>
+              </div>
+              <div class="form-group" id="param">
+                <label>DOTANOC</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q2-option1" name="q2" class="custom-control-input" value="0">
+                  <label class="custom-control-label" for="q2-option1">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q2-option2" name="q2" class="custom-control-input" value="5">
+                  <label class="custom-control-label" for="q2-option2">Positive or Presence of Inflammation</label>
+                </div>
+              </div>
+              <div class="form-group" id="param">
+                <label>EMBX</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q3-option1" name="q3" class="custom-control-input" value="0">
+                  <label class="custom-control-label" for="q3-option1">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q3-option2" name="q3" class="custom-control-input" value="5">
+                  <label class="custom-control-label" for="q3-option2">Positive or Presence of Inflammation</label>
+                </div>
+              </div>
+              <div class="form-group" id="param">
+                <label>CRP</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q4-option1" name="q4" class="custom-control-input" value="0">
+                  <label class="custom-control-label" for="q4-option1">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q4-option2" name="q4" class="custom-control-input" value="3">
+                  <label class="custom-control-label" for="q4-option2">Positive or CRP>3</label>
+                </div>
+              </div>
+              <div class="form-group" id="param">
+                <label>CPAIN</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q5-option1" name="q5" class="custom-control-input" value="0">
+                  <label class="custom-control-label" for="q5-option1">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="q5-option2" name="q5" class="custom-control-input" value="1">
+                  <label class="custom-control-label" for="q5-option2">Positive or Presence of Chest Pain</label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+                <button type="button" class="btn btn-info" id="go-to-instructions">Go to Instructions</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <div class="container my-5 d-none" id="result-container">
+	<div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card" id="result-card">
+          <div class="card-body">
+            <h4>Summary:</h4>
+            <p id="summary"></p>
+            <hr>
+            <p id="result-text"></p>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-primary" id="submit-again">Submit Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
